@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pendaftaran Circle Vilency</title>
+  <style>
+    body {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    .form-section {
+      margin-top: 20px;
+    }
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 8px;
+      width: 80%;
+      max-width: 400px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .warning {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pendaftaran Circle Vilency</h1>
+  <img src="https://files.catbox.moe/s9kzkk.jpg" alt="Logo Vilency" width="200">
+  
+  <div id="start-section">
+    <button onclick="showForm()">Lanjut ke Format Pendaftaran</button>
+  </div>
+
+  <div id="form-section" class="hidden">
+    <h2>Format Pendaftaran</h2>
+    <input type="text" id="nama" placeholder="Nama">
+    <input type="number" id="umur" placeholder="Umur">
+    <input type="text" id="kota" placeholder="Asal Kota">
+    <button onclick="confirmForm()">Confirm</button>
+    <button onclick="cancelForm()">Cancel</button>
+    <p id="warning-text" class="warning hidden">Confirm untuk melanjutkan pendaftaran!</p>
+  </div>
+
+  <footer>
+    Made With Yanzxz
+  </footer>
+
+  <script>
+    function showForm() {
+      document.getElementById('start-section').classList.add('hidden');
+      document.getElementById('form-section').classList.remove('hidden');
+    }
+
+    function confirmForm() {
+      const nama = document.getElementById('nama').value;
+      const umur = document.getElementById('umur').value;
+      const kota = document.getElementById('kota').value;
+
+      if (nama && umur && kota) {
+        const message = `Halo, saya ingin daftar Circle Vilency.%0ANama: ${nama}%0AUmur: ${umur}%0AAsal Kota: ${kota}`;
+        const url = `https://wa.me/6281374095677?text=${message}`;
+        window.location.href = url;
+      } else {
+        document.getElementById('warning-text').textContent = 'Harap isi semua data terlebih dahulu!';
+        document.getElementById('warning-text').classList.remove('hidden');
+      }
+    }
+
+    function cancelForm() {
+      document.getElementById('warning-text').textContent = 'Confirm untuk melanjutkan pendaftaran!';
+      document.getElementById('warning-text').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
